@@ -26,4 +26,4 @@ HOW TO RUN
 6. Follow on screen instructions by first typing a message into the client.
 7. Server will recieve and prompt for a reply message.
 8. After both messages are sent and recieved, both client and server will 
-   close there specific socket and exit. 
+   close their specific socket and exit. 
