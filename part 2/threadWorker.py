@@ -1,8 +1,10 @@
-def receive_messages(sock):
+def receiveMessages(sock):
     while True:
+        # Continuously listen for incoming messages from the socket
         try:
-            message = sock.recvfrom(2048)
-            print(message[0].decode())
+            receivingMessage = sock.recvfrom(2048)
+            print(receivingMessage[0].decode())
+        # Listener closes if an error occurs
         except:
             print("Connection has been closed.")
             break

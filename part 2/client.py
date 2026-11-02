@@ -1,6 +1,6 @@
 from socket import *
 import threading
-from threadWorker import receive_messages
+from threadWorker import receiveMessages
 
 # Client socket setup
 serverName = 'localhost'
@@ -8,15 +8,17 @@ serverPort = 12000
 clientSocket = socket(AF_INET, SOCK_DGRAM)
 clientSocket.bind(('', 0))
 
-clientRecievingThread = threading.Thread(target=receive_messages, args=(clientSocket,))
+# Thread worker for receiving messages from the server
+clientRecievingThread = threading.Thread(target=receiveMessages, args=(clientSocket,))
 clientRecievingThread.start()
 
 while True:
-    # Get user input from client and send to server
-    message = input('')
-    if message.lower() == 'exit':
+    # Loop to continuously send messages to the server
+    sendingMessage = input('')
+    if sendingMessage.lower() == 'exit':
         break
-    clientSocket.sendto(message.encode(), (serverName, serverPort))
+    clientSocket.sendto(sendingMessage.encode(), (serverName, serverPort))
 
+# Close the client socket and wait for the receiving thread to finish
 clientSocket.close()
 clientRecievingThread.join()
