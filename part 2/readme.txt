@@ -10,7 +10,7 @@ GENERAL INFORMATION
 
 PROJECT DESCRIPTION
 -------------------
-Two programs work together to form a UDP socket link between a local
+Two programs work together to form a TCP socket link between a local
 client and server. Both the client and server can continually exchange
 messages until users exit.
 
